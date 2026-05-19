@@ -5,3 +5,12 @@ stages:
       - src/ingest.py
     outs:
       - data/raw/students.csv
+
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/raw/students.csv
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
