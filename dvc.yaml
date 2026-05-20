@@ -14,3 +14,16 @@ stages:
     outs:
       - data/processed/train.csv
       - data/processed/test.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed/train.csv
+    params:
+      - params.yaml:
+          - train.n_estimators
+          - train.max_depth
+          - train.random_state
+    outs:
+      - models/model.pkl
