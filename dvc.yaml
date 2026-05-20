@@ -27,3 +27,13 @@ stages:
           - train.random_state
     outs:
       - models/model.pkl
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/model.pkl
+      - data/processed/test.csv
+    metrics:
+      - metrics/scores.json:
+          cache: false
